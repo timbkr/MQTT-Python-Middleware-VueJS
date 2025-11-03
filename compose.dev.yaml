@@ -1,0 +1,14 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosq-data:/mosquitto/data
+      - mosq-log:/mosquitto/log
+    restart: unless-stopped
+
+volumes:
+  mosq-data:
+  mosq-log:
